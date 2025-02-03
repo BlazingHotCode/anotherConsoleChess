@@ -113,8 +113,8 @@ public class MoveLogger {
                 x2 = move.charAt(3) - '1';
                 secPos = move.substring(2, 4);
             }
-            if (board.getBoard()[x1][y1].getType() != PieceTypes.PAWN
-                    && board.getBoard()[x1][y1].getType() != PieceTypes.NONE) {
+            if (board.getBoard()[x2][y2].getType() != PieceTypes.PAWN
+                    && board.getBoard()[x2][y2].getType() != PieceTypes.NONE) {
                 annotation += board.getBoard()[x2][y2].toChar();
             }
             annotation += move.substring(0, 2);

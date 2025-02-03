@@ -29,14 +29,14 @@ public class ChessGame {
     }
 
     public void startGame() {
-        // this.board.resetBoard();
-        this.board.setBoardZero();
-        this.board.setPiece(PieceTypes.KING, true, 0, 4);
-        this.board.setPiece(PieceTypes.KING, false, 7, 4);
-        this.board.setPiece(PieceTypes.ROOK, true, 0, 0);
-        this.board.setPiece(PieceTypes.ROOK, true, 0, 7);
-        this.board.setPiece(PieceTypes.ROOK, false, 7, 0);
-        this.board.setPiece(PieceTypes.ROOK, false, 7, 7);
+        this.board.resetBoard();
+        // this.board.setBoardZero();
+        // this.board.setPiece(PieceTypes.KING, true, 0, 4);
+        // this.board.setPiece(PieceTypes.KING, false, 7, 4);
+        // this.board.setPiece(PieceTypes.ROOK, true, 0, 0);
+        // this.board.setPiece(PieceTypes.ROOK, true, 0, 7);
+        // this.board.setPiece(PieceTypes.ROOK, false, 7, 0);
+        // this.board.setPiece(PieceTypes.ROOK, false, 7, 7);
         this.board.setPiecesLocations();
         this.moveLogger.reset();
         this.print();

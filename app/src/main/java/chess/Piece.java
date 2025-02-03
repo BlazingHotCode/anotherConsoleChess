@@ -470,7 +470,7 @@ public class Piece {
     }
 
     public boolean isCheck(Piece[][] board) {
-        boolean[][] opponentMoves = getCachedOpponentMoves(board, true, true, this.isWhite);
+        boolean[][] opponentMoves = getCachedOpponentMoves(board, false, true, this.isWhite);
         return opponentMoves[this.x][this.y];
     }
 
