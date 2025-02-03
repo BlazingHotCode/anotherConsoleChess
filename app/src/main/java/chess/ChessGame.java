@@ -75,6 +75,10 @@ public class ChessGame {
     public void play() {
         Scanner scanner = new Scanner(System.in);
         while (!this.board.isBlackWon() && !this.board.isWhiteWon()) {
+            if (MoveLogger.getInstance().isDraw()) {
+                System.out.println("Game drawn by " + MoveLogger.getInstance().getDrawReason());
+                break;
+            }
             System.out.println((this.moveLogger.getTurn() == 'W' ? "White" : "Black") + ", Enter your move: ");
             String move = scanner.nextLine();
             if (move.equals("exit")) {

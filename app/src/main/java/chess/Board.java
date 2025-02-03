@@ -2,7 +2,7 @@ package chess;
 
 import java.awt.Point;
 
-public class Board {
+public final class Board {
     private static Board instance;
 
     private Piece[][] board;
@@ -21,11 +21,7 @@ public class Board {
 
     private Board() {
         board = new Piece[8][8];
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                board[i][j] = new Piece(PieceTypes.NONE, true, i, j);
-            }
-        }
+        setBoardZero();
     }
 
     public void setBoardZero() {
@@ -141,7 +137,35 @@ public class Board {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 board[i][j].setPosition(i, j);
+                if (board[i][j].getType() == PieceTypes.KING) {
+                    if (board[i][j].isWhite()) {
+                        whiteKing.setLocation(i, j);
+                    } else {
+                        blackKing.setLocation(i, j);
+                    }
+                }
             }
         }
+    }
+
+    public boolean[][] getAllMovesByColor(boolean whiteMove) {
+        boolean[][] allMoves = new boolean[8][8];
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                boolean[][] possibleMoves = board[i][j].getPossibleMoves(board, false, true);
+                for (int k = 0; k < 8; k++) {
+                    for (int l = 0; l < 8; l++) {
+                        allMoves[k][l] = allMoves[k][l] || possibleMoves[k][l];
+                    }
+                }
+            }
+        }
+        return allMoves;
+    }
+
+    public boolean isCheckmate() {
+        Point king = MoveLogger.getInstance().getTurn() == 'W' ? whiteKing : blackKing;
+
+        return board[king.x][king.y].isCheckmate(board);
     }
 }

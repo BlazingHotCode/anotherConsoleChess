@@ -301,7 +301,7 @@ public class Piece {
         int[] dy = {-1, 0, 1, -1, 1, -1, 0, 1};
 
         // Get all opponent moves from cache
-        // boolean[][] opponentMoves = getCachedOpponentMoves(board, false, true, this.isWhite);
+        boolean[][] opponentMoves = getCachedOpponentMoves(board,false, true, this.isWhite);
 
         for (int i = 0; i < 8; i++) {
             int newX = x + dx[i];
@@ -415,6 +415,7 @@ public class Piece {
                 System.out.println("Not your turn");
                 return false;
             }
+
             // Castling move
             if (this.isKing() && Math.abs(this.y - y) == 2) {
                 if (y > this.y) {
